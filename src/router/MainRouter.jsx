@@ -1,8 +1,10 @@
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { Category, Home, ItemDetail } from "../pages";
+import { NavBar } from "../components";
 
 export const MainRouter = () => {
     return (<Router>
+        <NavBar/>
     <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/item/:id" element={<ItemDetail />}/>

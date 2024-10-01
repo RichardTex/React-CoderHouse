@@ -19,7 +19,7 @@ import {
     import { MdLocalShipping } from 'react-icons/md';
 
 
-export const ItemDetailContainer = () => {
+export const ItemDetailContainer = ({item}) => {
     return (
         <Container maxW={'7xl'}>
         <SimpleGrid
@@ -31,7 +31,7 @@ export const ItemDetailContainer = () => {
                 rounded={'md'}
                 alt={'product image'}
                 src={
-                'https://images.unsplash.com/photo-1596516109370-29001ec8ec36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODE1MDl8MHwxfGFsbHx8fHx8fHx8fDE2Mzg5MzY2MzE&ixlib=rb-1.2.1&q=80&w=1080'
+                item.thumbnail
                 }
                 fit={'cover'}
                 align={'center'}
@@ -45,13 +45,13 @@ export const ItemDetailContainer = () => {
                 lineHeight={1.1}
                 fontWeight={600}
                 fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-                Automatic Watch
+                {item.title}
                 </Heading>
                 <Text
                 color={useColorModeValue('gray.900', 'gray.400')}
                 fontWeight={300}
                 fontSize={'2xl'}>
-                $350.00 USD
+                {item.price} USD
                 </Text>
             </Box>
 
@@ -63,9 +63,7 @@ export const ItemDetailContainer = () => {
                 }>
                 <VStack spacing={{ base: 4, sm: 6 }}>
                 <Text fontSize={'lg'}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid amet
-                    at delectus doloribus dolorum expedita hic, ipsum maxime modi nam officiis
-                    porro, quae, quisquam quos reprehenderit velit? Natus, totam.
+                {item.description}
                 </Text>
                 </VStack>
                 <Box>
