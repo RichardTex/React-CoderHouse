@@ -8,7 +8,6 @@ import {
     MenuList,
     MenuItem,
     MenuDivider,
-    useDisclosure,
     useColorModeValue,
     Stack,
     useColorMode,
@@ -16,26 +15,27 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { CartWidget } from "../CartWidget";
-import { useCategory } from "../../hooks";
+import { useItems } from "../../hooks";
 import { Link } from "react-router-dom";
 
 export const NavBar = () => {
     const { colorMode, toggleColorMode } = useColorMode();
-    const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const { categories } = useCategory();
+    const { itemsData } = useItems("categories");
 
     return (
         <>
             <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
                 <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-                    <Box>Logo</Box>
+                    <Link to="/">
+                        <Box>Logo</Box>
+                    </Link>
                     <Menu>
                         <MenuButton as={Button} cursor="pointer" style={{ marginLeft: 30 }}>
                             Categorias
                         </MenuButton>
                         <MenuList height={"300px"} overflowY={"scroll"}>
-                            {categories.map((category) => (
+                            {itemsData.map((category) => (
                                 <MenuItem key={category.slug}>
                                     <Link to={`/category/${category.slug}`}>{category.name}</Link>
                                 </MenuItem>
